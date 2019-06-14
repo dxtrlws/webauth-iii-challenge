@@ -5,7 +5,6 @@ export default class Login extends Component {
   state = {
     username: '',
     password: '',
-    department: ''
   };
 
   handleChange = e => {
@@ -15,27 +14,27 @@ export default class Login extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    const { username, password, department } = this.state;
+    const { username, password } = this.state;
     const user = {
       username,
       password,
-      department
     };
     axios
-      .post('http://localhost:5000/api/register', user)
-      .then(data => {
+      .post('http://localhost:5000/api/login', user)
+      .then(result => {
         this.setState({
           username: '',
           password: '',
-          department: ''
         });
+        localStorage.setItem('token', result.data.authToken)
+        this.props.history.push('/users')
       })
       .catch(err => {
         console.log(err);
       });
   };
   render() {
-    const { username, password, department } = this.state;
+    const { username, password } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -44,13 +43,6 @@ export default class Login extends Component {
             name='username'
             value={username}
             placeholder='username'
-            onChange={this.handleChange}
-          />
-          <input
-            type='text'
-            name='department'
-            value={department}
-            placeholder='department'
             onChange={this.handleChange}
           />
           <input

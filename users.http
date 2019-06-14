@@ -11,8 +11,9 @@ post http://localhost:5000/api/register
 Content-Type: application/json
 
 {
-    "username": "dex",
-    "password": "oicu812"
+    "username": "dexter",
+    "password": "oicu812",
+    "department": "Web Services"
 }
 
 ###
