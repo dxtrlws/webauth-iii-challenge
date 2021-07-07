@@ -1,0 +1,22 @@
+post http://localhost:5000/api/login 
+Content-Type: application/json
+
+{
+    "username": "ken",
+    "password": "oicu812"
+}
+###
+
+post http://localhost:5000/api/register 
+Content-Type: application/json
+
+{
+    "username": "dexter",
+    "password": "oicu812",
+    "department": "Web Services"
+}
+
+###
+
+get http://localhost:5000/api/users 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU2MDMwMTk5OX0.gskrJXO1YDcsvzO8RmFsD1H7EQV2o8GEsVANzLvk-ME
